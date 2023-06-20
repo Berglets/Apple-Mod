@@ -1,9 +1,14 @@
 package com.berglets.applemod;
 
+import com.berglets.applemod.ModRecipes.AppleRecipe;
 import com.berglets.applemod.items.ItemGeneration;
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
+import net.minecraft.world.item.crafting.SuspiciousStewRecipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +24,7 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 import javax.swing.*;
@@ -32,7 +38,14 @@ public class AppleMod
 
     public static final DeferredRegister<Item> ITEMS_REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, AppleMod.MOD_ID);
 
-    // Directly reference a slf4j logger
+    public static final DeferredRegister<RecipeSerializer<?>> APPLE_RECIPE_REGISTER =
+            DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, AppleMod.MOD_ID);
+
+    public static final RegistryObject<SimpleRecipeSerializer<AppleRecipe>> APPLE_RECIPE =
+            APPLE_RECIPE_REGISTER.register("crafting_apples", () -> new SimpleRecipeSerializer<>(AppleRecipe::new));
+
+
+
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
@@ -46,8 +59,9 @@ public class AppleMod
         MinecraftForge.EVENT_BUS.register(this);
 
         ITEMS_REGISTER.register(eventBus);
-        ItemGeneration.generateApples();
+        ItemGeneration.generateApples(); //you might need to change order on these
 
+        APPLE_RECIPE_REGISTER.register(eventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -91,16 +105,4 @@ public class AppleMod
         LOGGER.info("HELLO from server starting");
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents
-    {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent)
-        {
-            // Register a new block here
-            LOGGER.info("HELLO from Register Block");
-        }
-    }
 }
