@@ -1,18 +1,14 @@
 package com.berglets.applemod;
 
-import com.berglets.applemod.ModRecipes.AppleRecipe;
-import com.berglets.applemod.items.ItemGeneration;
+import com.berglets.applemod.items.AppleRecipe;
+import com.berglets.applemod.items.AppleCreativeModeTab;
+import com.berglets.applemod.items.AppleItem;
 import com.mojang.logging.LogUtils;
-import net.minecraft.core.Registry;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
-import net.minecraft.world.item.crafting.SuspiciousStewRecipe;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -27,7 +23,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-import javax.swing.*;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -36,7 +31,15 @@ public class AppleMod
 {
     public static final String MOD_ID = "applemod";
 
-    public static final DeferredRegister<Item> ITEMS_REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, AppleMod.MOD_ID);
+
+
+    public static final DeferredRegister<Item> ITEMS_REGISTER =
+            DeferredRegister.create(ForgeRegistries.ITEMS, AppleMod.MOD_ID);
+
+    public static final RegistryObject<Item> CUSTOM_APPLE =
+            ITEMS_REGISTER.register("custom_apple", () -> new AppleItem(new Item.Properties().tab(AppleCreativeModeTab.APPLE_TAB)));
+
+
 
     public static final DeferredRegister<RecipeSerializer<?>> APPLE_RECIPE_REGISTER =
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, AppleMod.MOD_ID);
@@ -59,13 +62,12 @@ public class AppleMod
         MinecraftForge.EVENT_BUS.register(this);
 
         ITEMS_REGISTER.register(eventBus);
-        ItemGeneration.generateApples(); //you might need to change order on these
-
         APPLE_RECIPE_REGISTER.register(eventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
+
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());

@@ -1,7 +1,7 @@
-package com.berglets.applemod.ModRecipes;
+package com.berglets.applemod.items;
 
 import com.berglets.applemod.AppleMod;
-import com.berglets.applemod.items.ItemGeneration;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.Item;
@@ -49,11 +49,16 @@ public class AppleRecipe extends CustomRecipe {
 		}
 	}
 
+	//give the properties of the apple here as stack data
 	@Override
 	public ItemStack assemble(CraftingContainer container) {
 		Item surrounding = container.getItem(1).getItem();
-		Item result = ItemGeneration.APPLES.inverse().get(surrounding).get();
-		return new ItemStack(result, 1);
+		ItemStack stack = new ItemStack(AppleMod.CUSTOM_APPLE.get(), 1);
+
+		CompoundTag tag = new CompoundTag();
+		tag.putString("applemod.name", surrounding.getDescription().getString() + " Apple");
+		stack.setTag(tag);
+		return stack;
 	}
 
 	@Override
