@@ -1,3 +1,18 @@
 {
-  "itemGroup.appletab" : "APPLES"
+  "itemGroup.appletab" : "Apples",
+  "item.applemod.default_apple" : "Default Apple",
+  "item.applemod.copper_apple" : "Copper Apple",
+  "item.applemod.diamond_apple" : "Diamond Apple",
+  "item.applemod.dirt_apple" : "Dirt Apple",
+  "item.applemod.emerald_apple" : "Emerald Apple",
+  "item.applemod.food_apple" : "Food Apple",
+  "item.applemod.glass_apple" : "Glass Apple",
+  "item.applemod.iron_apple" : "Iron Apple",
+  "item.applemod.netherite_apple" : "Netherite Apple",
+  "item.applemod.plant_apple" : "Plant Apple",
+  "item.applemod.rainbow_apple" : "Rainbow Apple",
+  "item.applemod.redstone_apple" : "Redstone Apple",
+  "item.applemod.stone_apple" : "Stone Apple",
+  "item.applemod.water_apple" : "Water Apple",
+  "item.applemod.wood_apple" : "Wood Apple"
 }
