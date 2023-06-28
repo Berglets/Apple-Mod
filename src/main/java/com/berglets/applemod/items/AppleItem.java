@@ -48,6 +48,21 @@ public class AppleItem extends Item {
 	}
 
 	/**
+	 * Used for special apples only, determined by NBT data of the ItemStack.
+	 *
+	 * @param stack the in game item stack
+	 * @return true if the item should have the foil glow
+	 */
+	@Override
+	public boolean isFoil(ItemStack stack) {
+		CompoundTag tag = stack.getTag();
+		if(stack.hasTag() && tag.contains("applemod.foil")) {
+			return tag.getBoolean("applemod.foil");
+		}
+		return super.isFoil(stack);
+	}
+
+	/**
 	 * Determines this item's FoodProperties based on its NBT data.
 	 *
 	 * @param stack The ItemStack the entity wants to eat.
@@ -88,8 +103,8 @@ public class AppleItem extends Item {
 			case "stone_apple" : return FoodBuilders.STONE;
 			case "water_apple" : return FoodBuilders.WATER;
 			case "wood_apple" : return FoodBuilders.WOODEN;
-			case "diamond_block" : return FoodBuilders.DIAMOND;
 			case "netherite_block" : return FoodBuilders.ENCHANTED_NETHERITE;
+			case "diamond_block": return FoodBuilders.ENCHANTED_DIAMOND;
 			default: return FoodBuilders.DEFAULT;
 		}
 	}

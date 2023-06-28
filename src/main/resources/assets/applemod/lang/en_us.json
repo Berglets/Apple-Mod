@@ -14,5 +14,7 @@
   "item.applemod.redstone_apple" : "Redstone Apple",
   "item.applemod.stone_apple" : "Stone Apple",
   "item.applemod.water_apple" : "Water Apple",
-  "item.applemod.wood_apple" : "Wood Apple"
+  "item.applemod.wood_apple" : "Wood Apple",
+  "Block of Diamond Apple" : "§3Enchanted Diamond Apple",
+  "Block of Netherite Apple" : "§5Enchanted Netherite Apple"
 }

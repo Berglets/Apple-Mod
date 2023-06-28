@@ -22,13 +22,26 @@ public final class FoodBuilders {
 			.effect(new MobEffectInstance(MobEffects.ABSORPTION, 400, 2), 1.0F);
 
 	public static final FoodProperties.Builder DIAMOND = new FoodProperties.Builder().saturationMod(1.2f).nutrition(4).alwaysEat()
-			.effect(new MobEffectInstance(MobEffects.REGENERATION, 800, 2), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.REGENERATION, 700, 2), 1.0F)
 			.effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 12000, 2), 1.0F)
 			.effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 12000, 2), 1.0F)
 			.effect(new MobEffectInstance(MobEffects.ABSORPTION, 4400, 4), 1.0F);
 
+	public static final FoodProperties.Builder ENCHANTED_DIAMOND = new FoodProperties.Builder().saturationMod(1.2f).nutrition(4).alwaysEat()
+			.effect(new MobEffectInstance(MobEffects.REGENERATION, 1000, 1), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 12000, 2), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 12000, 2), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.ABSORPTION, 4400, 4), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 6000, 1), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 6000, 1), 1.0F);
+
 	public static final FoodProperties.Builder NETHERITE = new FoodProperties.Builder().saturationMod(1.2f).nutrition(4).alwaysEat()
-			.effect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1), 1.0F);
+			.effect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 12000, 2), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 12000, 2), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.ABSORPTION, 4400, 4), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 6000, 1), 1.0F)
+			.effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 6000, 1), 1.0F);
 
 	public static final FoodProperties.Builder ENCHANTED_NETHERITE = new FoodProperties.Builder().saturationMod(1.2f).nutrition(4).alwaysEat()
 			.effect(new MobEffectInstance(MobEffects.REGENERATION, 1200, 2), 1.0F)

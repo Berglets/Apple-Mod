@@ -80,6 +80,8 @@ public class AppleRecipe extends CustomRecipe {
 	@Override
 	public ItemStack assemble(CraftingContainer container) {
 		Item surrounding = container.getItem(1).getItem();
+		if(surrounding == Items.GOLD_BLOCK)
+			return new ItemStack(Items.ENCHANTED_GOLDEN_APPLE, 1);
 
 		//insert correct image/item
 		Item appleItem = AppleUtil.getAppleImage(surrounding);
@@ -87,6 +89,7 @@ public class AppleRecipe extends CustomRecipe {
 		CompoundTag tag = new CompoundTag();
 		tag.putString("applemod.food", AppleUtil.getFoodBuilder(surrounding)); //insert food properties as NBT data
 		tag.putString("applemod.name", surrounding.getDescription().getString() + " Apple"); //insert correct apple name
+		tag.putBoolean("applemod.foil", surrounding == Items.DIAMOND_BLOCK || surrounding == Items.NETHERITE_BLOCK ? true : false);
 		//create apple item
 		ItemStack stack = new ItemStack(appleItem == null ? Apples.DEFAULT_APPLE : appleItem, 1);
 		stack.setTag(tag);
