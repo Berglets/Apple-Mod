@@ -1,5 +1,5 @@
 # Tons-of-Apples
-Curseforge download: https://legacy.curseforge.com/minecraft/mc-mods/tons-of-apples 
+Curseforge site: https://legacy.curseforge.com/minecraft/mc-mods/tons-of-apples 
 
 This mod adds many new custom apple textures and allows ANY item in the game (including modded items) to be crafted into an apple!
 
